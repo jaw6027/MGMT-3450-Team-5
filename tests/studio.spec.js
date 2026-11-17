@@ -1,0 +1,70 @@
+import { test, expect } from '@playwright/test';
+
+test('customer journey: add, filter, edit, persist, and export', async ({page}) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'Good things start with connection.' })).toBeVisible();
+  await page.getByRole('button', {name:'Add customer',exact:true}).click();
+  await page.getByLabel('Full name').fill('Test Customer');
+  await page.getByLabel('Email (optional)').fill('test@example.com');
+  await page.getByLabel('Interest', {exact:true}).selectOption('Everyday essentials');
+  await page.getByLabel('Notes', {exact:true}).fill('Requested details about lamps.');
+  await page.getByRole('button',{name:'Save changes'}).click();
+  await page.getByRole('button',{name:'Customers',exact:true}).click();
+  await page.getByRole('textbox',{name:'Search customers'}).fill('Test Customer');
+  await expect(page.locator('tbody tr')).toHaveCount(1);
+  await page.getByRole('button',{name:'Edit Test Customer'}).click();
+  await page.getByLabel('Status',{exact:true}).selectOption('Follow-up');
+  await page.getByRole('button',{name:'Save changes'}).click();
+  await expect(page.locator('tbody')).toContainText('Follow-up');
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button',{name:'Export CSV'}).click();
+  expect((await downloadPromise).suggestedFilename()).toBe('salt-glow-contacts.csv');
+  await page.reload();
+  await page.getByRole('button',{name:'Customers',exact:true}).click();
+  await page.getByRole('textbox',{name:'Search customers'}).fill('Test Customer');
+  await expect(page.locator('tbody')).toContainText('test@example.com');
+  await expect(page.locator('tbody')).toContainText('Follow-up');
+  await page.getByRole('combobox',{name:'Filter by interest'}).selectOption('Clothing & accessories');
+  await expect(page.locator('tbody')).toContainText('No contacts match');
+});
+
+test('campaign changes and completed follow-ups persist', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button',{name:'Campaigns',exact:true}).click();
+  await page.getByRole('button',{name:'Create campaign'}).click();
+  await page.getByLabel('Campaign title').fill('Local partner invitation');
+  await page.getByLabel('Caption',{exact:true}).fill('Discover Salt Glow. Message us for confirmed availability.');
+  await page.getByLabel('Channel',{exact:true}).selectOption('Partner accounts');
+  await page.getByLabel('Review status').selectOption('Ready');
+  await page.getByRole('button',{name:'Save changes'}).click();
+  await expect(page.getByRole('heading',{name:'Local partner invitation',level:3})).toBeVisible();
+  await page.getByRole('button',{name:/^Follow-ups/}).click();
+  await page.getByRole('button',{name:'Add follow-up'}).click();
+  await page.getByLabel('Task',{exact:true}).fill('Confirm partner details');
+  await page.getByLabel('Details',{exact:true}).fill('Review availability before outreach.');
+  await page.getByRole('button',{name:'Save changes'}).click();
+  await page.getByRole('checkbox',{name:'Complete Confirm partner details'}).check();
+  await page.reload();
+  await page.getByRole('button',{name:/^Follow-ups/}).click();
+  await expect(page.getByRole('checkbox',{name:'Complete Confirm partner details'})).toBeChecked();
+  await page.getByRole('button',{name:'Campaigns',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Local partner invitation',level:3})).toBeVisible();
+});
+
+test('mobile navigation, dialog, image, and layout work without page errors', async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  const errors=[]; page.on('pageerror', e=>errors.push(e.message));
+  await page.goto('/');
+  await expect(page.getByRole('heading',{name:'Good things start with connection.'})).toBeVisible();
+  await expect(page.locator('.hero-art img')).toHaveJSProperty('complete',true);
+  expect(await page.locator('.hero-art img').evaluate(i=>i.naturalWidth)).toBeGreaterThan(0);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.getByRole('button',{name:'Customers',exact:true}).click();
+  await page.getByRole('button',{name:'Add customer',exact:true}).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).not.toBeVisible();
+  await page.getByRole('button',{name:'Campaigns',exact:true}).click();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+});
