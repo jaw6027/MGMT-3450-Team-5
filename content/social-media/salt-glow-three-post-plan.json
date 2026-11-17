@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "brand_name": "Salt Glow",
+  "alternate_name_in_lecture_notes": "Salt Globe",
+  "purpose": "Draft Instagram content and sample data for the group's marketing application.",
+  "usage_notes": [
+    "Use Salt Glow in these drafts; confirm final brand spelling with the group before publishing.",
+    "Square-bracketed PLACEHOLDER text identifies unconfirmed business details. Replace it with verified information before publishing.",
+    "Visuals are proposed concepts, not existing brand assets. Use approved assets or images with permission.",
+    "These posts are unscheduled drafts. No prices, specific services, or health claims are supplied."
+  ],
+  "posts": [
+    {
+      "id": "salt-glow-ig-001",
+      "sequence": 1,
+      "title": "Welcome to Salt Glow",
+      "platform": "Instagram",
+      "format": "Feed image",
+      "goal": "Introduce the brand and invite people to follow.",
+      "status": "Draft",
+      "scheduled_at": null,
+      "caption": "Hello and welcome to Salt Glow! We're happy you're here. ✨\n\n[PLACEHOLDER: Add one approved sentence explaining what Salt Glow offers and who it is for.]\n\nWe'd love for you to get to know us. Follow along and say hello in the comments!",
+      "visual_idea": "A simple welcome graphic with generous spacing, warm neutral colors, and the words 'Welcome to Salt Glow.' [PLACEHOLDER: Apply approved brand colors, fonts, and logo once confirmed.]",
+      "call_to_action": "Follow along and say hello in the comments!",
+      "placeholders_to_confirm": [
+        "Approved business introduction and intended audience",
+        "Brand colors, fonts, and logo"
+      ]
+    },
+    {
+      "id": "salt-glow-ig-002",
+      "sequence": 2,
+      "title": "Let's hear from you",
+      "platform": "Instagram",
+      "format": "Feed image",
+      "goal": "Invite audience input on future social content.",
+      "status": "Draft",
+      "scheduled_at": null,
+      "caption": "Let's get to know each other a little better. 💛\n\nWhat would you like to see here: a closer look at Salt Glow, introductions to the people behind it, or answers to your questions?\n\nShare your pick in the comments, or tell us another idea. We'd love to hear from you!",
+      "visual_idea": "A readable question graphic headed 'What would you like to see?' with three text options: 'A closer look,' 'Meet the people,' and 'Your questions answered.' [PLACEHOLDER: Apply approved brand colors, fonts, and logo once confirmed.]",
+      "call_to_action": "Share your pick in the comments, or tell us another idea.",
+      "placeholders_to_confirm": [
+        "Brand colors, fonts, and logo"
+      ]
+    },
+    {
+      "id": "salt-glow-ig-003",
+      "sequence": 3,
+      "title": "A closer look at Salt Glow",
+      "platform": "Instagram",
+      "format": "Feed image",
+      "goal": "Introduce one verified offering and invite questions.",
+      "status": "Draft",
+      "scheduled_at": null,
+      "caption": "Curious about Salt Glow? Let's take a closer look. ✨\n\nMeet [PLACEHOLDER: Confirmed product or service name].\n\n[PLACEHOLDER: Add a brief, verified description of what it is; omit prices and health claims.]\n\nWhat would you like to know? Leave a question in the comments!",
+      "visual_idea": "One clear image of the confirmed offering, paired with its name and minimal text. [PLACEHOLDER: Insert an approved photo of the confirmed offering and apply approved brand styling.] Avoid stock images that could misrepresent the business.",
+      "call_to_action": "What would you like to know? Leave a question in the comments!",
+      "placeholders_to_confirm": [
+        "Product or service name and factual description",
+        "Approved offering photo and permission to use it",
+        "Brand colors, fonts, and logo"
+      ]
+    }
+  ]
+}

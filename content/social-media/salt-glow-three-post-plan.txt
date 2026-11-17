@@ -1,0 +1,92 @@
+SALT GLOW: THREE-POST INSTAGRAM CONTENT PLAN
+===========================================
+
+Purpose: Draft Instagram content and sample data for the group's marketing application.
+Name in lecture notes: Salt Globe
+
+BEFORE USING THESE DRAFTS
+- Use Salt Glow in these drafts; confirm final brand spelling with the group before publishing.
+- Square-bracketed PLACEHOLDER text identifies unconfirmed business details. Replace it with verified information before publishing.
+- Visuals are proposed concepts, not existing brand assets. Use approved assets or images with permission.
+- These posts are unscheduled drafts. No prices, specific services, or health claims are supplied.
+
+----------------------------------------------------------------
+POST 1: Welcome to Salt Glow
+ID: salt-glow-ig-001
+Platform: Instagram | Format: Feed image | Status: Draft
+Schedule: Not scheduled
+Goal: Introduce the brand and invite people to follow.
+
+INSTAGRAM CAPTION
+Hello and welcome to Salt Glow! We're happy you're here. ✨
+
+[PLACEHOLDER: Add one approved sentence explaining what Salt Glow offers and who it is for.]
+
+We'd love for you to get to know us. Follow along and say hello in the comments!
+
+VISUAL IDEA
+A simple welcome graphic with generous spacing, warm neutral colors, and the words 'Welcome to Salt Glow.' [PLACEHOLDER: Apply approved brand colors, fonts, and logo once confirmed.]
+
+CALL TO ACTION
+Follow along and say hello in the comments!
+
+DETAILS TO CONFIRM
+- Approved business introduction and intended audience
+- Brand colors, fonts, and logo
+
+----------------------------------------------------------------
+POST 2: Let's hear from you
+ID: salt-glow-ig-002
+Platform: Instagram | Format: Feed image | Status: Draft
+Schedule: Not scheduled
+Goal: Invite audience input on future social content.
+
+INSTAGRAM CAPTION
+Let's get to know each other a little better. 💛
+
+What would you like to see here: a closer look at Salt Glow, introductions to the people behind it, or answers to your questions?
+
+Share your pick in the comments, or tell us another idea. We'd love to hear from you!
+
+VISUAL IDEA
+A readable question graphic headed 'What would you like to see?' with three text options: 'A closer look,' 'Meet the people,' and 'Your questions answered.' [PLACEHOLDER: Apply approved brand colors, fonts, and logo once confirmed.]
+
+CALL TO ACTION
+Share your pick in the comments, or tell us another idea.
+
+DETAILS TO CONFIRM
+- Brand colors, fonts, and logo
+
+----------------------------------------------------------------
+POST 3: A closer look at Salt Glow
+ID: salt-glow-ig-003
+Platform: Instagram | Format: Feed image | Status: Draft
+Schedule: Not scheduled
+Goal: Introduce one verified offering and invite questions.
+
+INSTAGRAM CAPTION
+Curious about Salt Glow? Let's take a closer look. ✨
+
+Meet [PLACEHOLDER: Confirmed product or service name].
+
+[PLACEHOLDER: Add a brief, verified description of what it is; omit prices and health claims.]
+
+What would you like to know? Leave a question in the comments!
+
+VISUAL IDEA
+One clear image of the confirmed offering, paired with its name and minimal text. [PLACEHOLDER: Insert an approved photo of the confirmed offering and apply approved brand styling.] Avoid stock images that could misrepresent the business.
+
+CALL TO ACTION
+What would you like to know? Leave a question in the comments!
+
+DETAILS TO CONFIRM
+- Product or service name and factual description
+- Approved offering photo and permission to use it
+- Brand colors, fonts, and logo
+
+SAMPLE DATA NOTES
+The matching JSON file contains the same three posts and usage notes.
+Stable IDs identify posts; sequence indicates suggested order, not dates.
+scheduled_at is null because no publication dates have been chosen.
+placeholders_to_confirm lists facts and assets requiring group review.
+The JSON is sample data; adapt its fields to the application when its data model is defined.
