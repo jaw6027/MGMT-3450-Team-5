@@ -6,9 +6,11 @@ test('customer journey: add, filter, edit, persist, and export', async ({page}) 
   await page.getByRole('button', {name:'Add customer',exact:true}).click();
   await page.getByLabel('Full name').fill('Test Customer');
   await page.getByLabel('Email (optional)').fill('test@example.com');
-  await page.getByLabel('Interest', {exact:true}).selectOption('Everyday essentials');
+  await page.getByLabel('Customer preference', {exact:true}).fill('Gift ideas for friends');
   await page.getByLabel('Notes', {exact:true}).fill('Requested details about lamps.');
   await page.getByRole('button',{name:'Save changes'}).click();
+  await expect(page.getByRole('heading',{name:'What customers want'})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Gift ideas for friends 1 contact',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Customers',exact:true}).click();
   await page.getByRole('textbox',{name:'Search customers'}).fill('Test Customer');
   await expect(page.locator('tbody tr')).toHaveCount(1);
