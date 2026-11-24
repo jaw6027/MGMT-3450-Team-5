@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { transform } from 'esbuild';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const output=process.argv[2] || path.join(root, 'salt-glow-preview.html');
+const images={};
+for(const name of ['retreat.webp','rituals.webp','salt-glow-logo.png']) images[name]=`data:image/${name.endsWith('.png')?'png':'webp'};base64,`+fs.readFileSync(`${root}/public/images/spa/${name}`).toString('base64');
+let source=fs.readFileSync(`${root}/src/spa.js`,'utf8').replace('import "./spa.css";','').replace(/^const image = .*;$/m,`const image = name => (${JSON.stringify(images)})[name];`);
+source=source.replace('<a href="?studio">TEAM STUDIO ${arrow}</a>','');
+const js=(await transform(source,{format:'iife',target:'es2020',minify:true})).code;
+let css=fs.readFileSync(`${root}/src/spa.css`,'utf8').replace(/url\(["']?\.\.\/public\/fonts\/([^"')]+)["']?\)/g,(_,name)=>`url("data:font/woff2;base64,${fs.readFileSync(`${root}/public/fonts/${name}`).toString('base64')}")`);
+const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Salt Glow — Spa & Wellness Preview</title><style>${css}</style></head><body><div id="app"></div><script>${js.replaceAll('</script','<\\/script')}</script></body></html>`;
+fs.writeFileSync(output,html);console.log(`Preview saved: ${output} (${Math.round(Buffer.byteLength(html)/1024)} KB)`);
