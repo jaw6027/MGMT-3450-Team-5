@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('customer journey: add, filter, edit, persist, and export', async ({page}) => {
-  await page.goto('/?studio');
+  await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Good things start with connection.' })).toBeVisible();
   await page.getByRole('button', {name:'Add customer',exact:true}).click();
   await page.getByLabel('Full name').fill('Test Customer');
@@ -31,7 +31,7 @@ test('customer journey: add, filter, edit, persist, and export', async ({page}) 
 });
 
 test('campaign changes and completed follow-ups persist', async ({page}) => {
-  await page.goto('/?studio');
+  await page.goto('/');
   await page.getByRole('button',{name:'Campaigns',exact:true}).click();
   await page.getByRole('button',{name:'Create campaign'}).click();
   await page.getByLabel('Campaign title').fill('Local partner invitation');
@@ -56,7 +56,7 @@ test('campaign changes and completed follow-ups persist', async ({page}) => {
 test('mobile navigation, dialog, image, and layout work without page errors', async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   const errors=[]; page.on('pageerror', e=>errors.push(e.message));
-  await page.goto('/?studio');
+  await page.goto('/');
   await expect(page.getByRole('heading',{name:'Good things start with connection.'})).toBeVisible();
   await expect(page.locator('.hero-art img')).toHaveJSProperty('complete',true);
   expect(await page.locator('.hero-art img').evaluate(i=>i.naturalWidth)).toBeGreaterThan(0);
